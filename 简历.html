@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲁耀 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#4080FF',
+                        accent: '#00C1D4',
+                        dark: '#333647',
+                        light: '#F9FAFB',
+                        neutral: '#6B7280'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary border-l-4 border-primary pl-3 py-1 mb-4;
+            }
+            .hover-link {
+                @apply transition-all duration-300 hover:text-primary hover:underline;
+            }
+            .card {
+                @apply bg-white rounded-xl shadow-md p-6 mb-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .badge {
+                @apply inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary;
+            }
+            .timeline-item {
+                @apply relative pl-8 pb-6 border-l-2 border-gray-200;
+            }
+            .timeline-item:last-child {
+                @apply border-transparent;
+            }
+            .timeline-dot {
+                @apply absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary;
+            }
+            .skill-bar {
+                @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+            }
+            .skill-progress {
+                @apply h-full bg-primary rounded-full transition-all duration-1000 ease-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter text-dark">
+    <!-- 背景装饰 -->
+    <div class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-accent/5 -z-10"></div>
+    <div class="fixed top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-bl-full -z-10"></div>
+    <div class="fixed bottom-0 left-0 w-1/4 h-1/4 bg-accent/5 rounded-tr-full -z-10"></div>
+
+    <div class="max-w-6xl mx-auto p-4 md:p-8" id="resume-content">
+        <!-- 头部信息 -->
+        <header class="card flex flex-col md:flex-row md:items-center justify-between mb-8 relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-150"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-accent/10 rounded-full -ml-12 -mb-12 transition-transform duration-500 group-hover:scale-150"></div>
+            
+            <div class="relative z-10">
+                <h1 class="text-[clamp(2rem,5vw,2.5rem)] font-bold text-dark mb-2 text-shadow">鲁耀</h1>
+                <p class="text-lg text-neutral mb-4">软件开发工程师 | 全栈开发经验 | 人工智能与鸿蒙开发认证</p>
+            </div>
+            
+            <div class="relative z-10 flex flex-wrap gap-4 mt-4 md:mt-0">
+                <a href="tel:15391027844" class="hover-link flex items-center text-neutral bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <i class="fa fa-phone text-primary mr-2"></i> 15391027844
+                </a>
+                <a href="mailto:1371815691@qq.com" class="hover-link flex items-center text-neutral bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <i class="fa fa-envelope text-primary mr-2"></i> 1371815691@qq.com
+                </a>
+                <a href="weixin://contacts/profile/1371815691" class="hover-link flex items-center text-neutral bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <i class="fa fa-weixin text-primary mr-2"></i> 1371815691
+                </a>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 左侧栏：教育、技能、证书 -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- 教育经历 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-graduation-cap mr-2"></i> 教育背景
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div>
+                                <h3 class="font-bold text-lg">内蒙古科技大学包头师范学院</h3>
+                                <p class="text-neutral mt-1">应用物理学 | 本科</p>
+                                <span class="badge mt-2 inline-block">2018-2022</span>
+                                <p class="text-sm mt-3 text-gray-600">
+                                    主修课程：光学、力学、热力学与统计学、原子物理、量子力学、数学物理方法、电工学、电动力学、信号与系统等。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 专业技能 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-code mr-2"></i> 专业技能
+                    </h2>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Java/C++</span>
+                                <span class="text-primary font-medium">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python/Django</span>
+                                <span class="text-primary font-medium">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">前端开发(HTML/CSS/JS)</span>
+                                <span class="text-primary font-medium">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">数据库开发</span>
+                                <span class="text-primary font-medium">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">嵌入式系统开发</span>
+                                <span class="text-primary font-medium">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 专业证书 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-certificate mr-2"></i> 专业证书
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                <i class="fa fa-mobile text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">华为HarmonyOS应用开发者基础认证</h3>
+                                <p class="text-sm text-gray-600 mt-1">证书编码：TCNpr7ez4u | 有效期至2027.05.09</p>
+                                <span class="text-xs text-neutral mt-1 block">2025.05.10</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                <i class="fa fa-code text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">高级Java认证证书</h3>
+                                <p class="text-sm text-gray-600 mt-1">证书编号：#00082845 | 发证机构：Itronix Solutions</p>
+                                <span class="text-xs text-neutral mt-1 block">2025.05</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                <i class="fa fa-book text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">联合国教科文组织慕课结业证书</h3>
+                                <p class="text-sm text-gray-600 mt-1">人工智能与法治（Artificial Intelligence and the Rule of Law）</p>
+                                <span class="text-xs text-neutral mt-1 block">2025.05.15</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                <i class="fa fa-space-shuttle text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">CAAC无人机驾驶证</h3>
+                                <p class="text-sm text-gray-600 mt-1">超视距-多旋翼</p>
+                                <span class="text-xs text-neutral mt-1 block">2024.10.22</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 个人优势 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-star mr-2"></i> 个人优势
+                    </h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>细心严谨，代码标注规范，学习能力强，乐于钻研新技术与不同计算机语言</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>抗压能力强且服从管理，擅长需求拆解与制定落地策略</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>兼具前端、后端及嵌入式开发项目经验，跨领域协作能力突出</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- 右侧栏：项目经验、工作经历 -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- 项目经验 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-briefcase mr-2"></i> 项目经验
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-light rounded-lg p-5 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <h3 class="font-bold text-lg">嵌入式可视化系统</h3>
+                                <span class="badge">2022.01-2022.06</span>
+                            </div>
+                            <p class="text-sm font-medium text-primary mb-3">角色：设计师</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>开发智能农场控制系统，实现灌溉、光照、二氧化碳、湿度、温度检测功能</li>
+                                <li>设计数据可视化界面，支持串口通讯与实时数据回传</li>
+                                <li>后端采用Python-Django框架开发，前端使用Vue.js构建交互界面</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light rounded-lg p-5 border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <h3 class="font-bold text-lg">购物商城系统</h3>
+                                <span class="badge">2021.04-2021.04</span>
+                            </div>
+                            <p class="text-sm font-medium text-secondary mb-3">角色：开发团队成员</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>参与类似某宝的购物商城系统开发，负责核心模块实现</li>
+                                <li>完成用户注册登录、商品详情展示、购物车、订单支付等功能</li>
+                                <li>使用前后端分离技术栈，优化系统响应速度与用户体验</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light rounded-lg p-5 border-l-4 border-accent shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-wrap justify-between items-start mb-3">
+                                <h3 class="font-bold text-lg">QT项目开发</h3>
+                                <span class="badge">2019.10-2019.10</span>
+                            </div>
+                            <p class="text-sm font-medium text-accent mb-3">角色：开发团队成员</p>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>使用C++开发门禁人脸识别系统，实现人员进出自动识别与记录</li>
+                                <li>设计并实现基于TCP/IP协议的网上聊天室应用，支持多用户实时交流</li>
+                                <li>优化算法性能，提升系统响应速度与识别准确率</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 工作经历 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-building mr-2"></i> 工作经历
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full -mr-20 -mt-20 transition-transform duration-500 group-hover:scale-150"></div>
+                            
+                            <div class="relative bg-white rounded-lg p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-wrap justify-between items-start mb-3">
+                                    <h3 class="font-bold text-lg">薛家湾第九小学</h3>
+                                    <span class="badge">2025.02-至今</span>
+                                </div>
+                                <p class="text-sm font-medium text-primary mb-3">人工智能教师</p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                    <li>负责人工智能教学以及信息技术支持</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full -mr-20 -mt-20 transition-transform duration-500 group-hover:scale-150"></div>
+                            
+                            <div class="relative bg-white rounded-lg p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-wrap justify-between items-start mb-3">
+                                    <h3 class="font-bold text-lg">薛家湾第七小学</h3>
+                                    <span class="badge">2024.06-2024.12</span>
+                                </div>
+                                <p class="text-sm font-medium text-secondary mb-3">编程教师</p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                    <li>负责Python和Scratch课程教学，设计趣味编程项目</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full -mr-20 -mt-20 transition-transform duration-500 group-hover:scale-150"></div>
+                            
+                            <div class="relative bg-white rounded-lg p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-wrap justify-between items-start mb-3">
+                                    <h3 class="font-bold text-lg">伊东集团纳林沟煤矿</h3>
+                                    <span class="badge">2023.07-2024.06</span>
+                                </div>
+                                <p class="text-sm font-medium text-primary mb-3">安全运行科 | 软件开发工程师</p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                    <li>负责煤矿安全生产监控系统的软件开发与运维支持</li>
+                                    <li>设计并实现安全数据可视化平台，提升安全监管效率</li>
+                                    <li>主导调度系统优化项目，提高生产调度响应速度</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full -mr-20 -mt-20 transition-transform duration-500 group-hover:scale-150"></div>
+                            
+                            <div class="relative bg-white rounded-lg p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-wrap justify-between items-start mb-3">
+                                    <h3 class="font-bold text-lg">上海原擎网络科技有限公司</h3>
+                                    <span class="badge">2022.07-2023.07</span>
+                                </div>
+                                <p class="text-sm font-medium text-secondary mb-3">软件开发工程师</p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                    <li>负责公司核心产品的后端开发与系统维护</li>
+                                    <li>优化数据库查询性能，提升系统响应速度</li>
+                                    <li>参与技术选型与架构设计，提高系统可扩展性</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-accent/5 rounded-full -mr-20 -mt-20 transition-transform duration-500 group-hover:scale-150"></div>
+                            
+                            <div class="relative bg-white rounded-lg p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-wrap justify-between items-start mb-3">
+                                    <h3 class="font-bold text-lg">昆山杰普软件科技有限公司</h3>
+                                    <span class="badge">2021.03-2021.07</span>
+                                </div>
+                                <p class="text-sm font-medium text-accent mb-3">软件开发工程师</p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                    <li>参与企业管理系统开发，负责模块设计与编码实现</li>
+                                    <li>执行代码审查，确保代码质量与规范</li>
+                                    <li>定位并解决系统BUG，提升系统稳定性</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 技能雷达图 -->
+                <section class="card">
+                    <h2 class="section-title flex items-center">
+                        <i class="fa fa-chart-radar mr-2"></i> 技能评估
+                    </h2>
+                    <div class="h-64">
+                        <canvas id="skillChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="mt-10 text-center text-gray-500 text-sm">
+            <p>© 2025 鲁耀 - 个人简历 | 最后更新：2025年5月25日</p>
+            <div class="mt-3 flex justify-center space-x-4">
+                <a href="#" class="hover-link text-gray-500 hover:text-primary" id="download-pdf">
+                    <i class="fa fa-download mr-1"></i> 下载PDF版本
+                </a>
+                <a href="#" class="hover-link text-gray-500 hover:text-primary" id="share-resume">
+                    <i class="fa fa-share-alt mr-1"></i> 分享简历
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 技能雷达图
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('skillChart').getContext('2d');
+            
+            const skillChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Java/C++', 'Python', '前端开发', '数据库', '嵌入式系统', '人工智能'],
+                    datasets: [{
+                        label: '技能水平',
+                        data: [85, 90, 80, 75, 85, 70],
+                        backgroundColor: 'rgba(22, 93, 255, 0.2)',
+                        borderColor: 'rgba(22, 93, 255, 1)',
+                        pointBackgroundColor: 'rgba(22, 93, 255, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(22, 93, 255, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true,
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: {
+                                stepSize: 20,
+                                backdropColor: 'transparent'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+        });
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // PDF 下载功能
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            const resumeContent = document.getElementById('resume-content');
+            const opt = {
+                margin:       10,
+                filename:     '鲁耀-个人简历.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(resumeContent).set(opt).save();
+        });
+
+        // 分享功能
+        document.getElementById('share-resume').addEventListener('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '鲁耀 - 个人简历',
+                    text: '查看鲁耀的个人简历',
+                    url: window.location.href
+                })
+               .then(() => console.log('成功分享'))
+               .catch((error) => console.log('分享失败:', error));
+            } else {
+                alert('您的浏览器不支持分享功能');
+            }
+        });
+    </script>
+</body>
+</html>
